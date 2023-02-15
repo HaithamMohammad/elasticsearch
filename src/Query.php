@@ -847,6 +847,10 @@ class Query
             $body["query"]["bool"]["filter"] = $this->filter;
         }
 
+        if(isset( $body["query"]["bool"]["should"])) {
+            $body["query"]["bool"]["minimum_should_match"] = 1;
+        }
+
         if(count($body["query"]) == 0){
             unset($body["query"]);
         }
